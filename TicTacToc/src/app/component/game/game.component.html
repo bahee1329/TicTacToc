@@ -1,0 +1,38 @@
+<div class="container">
+  @if (freshPage) {
+  <h2>Let's Play The Game</h2>
+  }
+
+  @if (!winner && !freshPage && !isDrow) {
+  <h1>Current Player {{player}}</h1>
+  }
+
+  @if (winner) {
+  <h2>Player {{winner}} won</h2>
+
+
+  }
+
+  @if(isDrow){
+  <h2>Drow!!</h2>
+  }
+
+
+  @if(winner || freshPage || isDrow){
+  <button (click)="newGame()">Start Game</button>
+  }
+
+  @if(!winner && !isDrow){
+  <main>
+    @for (val of squares; track $index) {
+    <app-board [value]="val" (click)="makeMove($index)"></app-board>
+
+    }
+  </main>
+  }
+
+
+
+
+
+</div>
